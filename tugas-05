@@ -1,0 +1,81 @@
+#include <stdio.h> 
+2 #include <time.h> 
+3 
+ 
+4 
+ 
+5     void tampilkan_kalender () 
+6 { 
+7 
+ 
+8     time_t rawtime ; 
+9     struct tm *info; 
+10     char buffer[80]; 
+11     char HARI[10]; 
+12 
+ 
+13     time(&rawtime); 
+14 
+ 
+15     info = localtime(&rawtime); 
+16 
+ 
+17     strftime(HARI,10,"%A",info); 
+18     if(strcmp(HARI,"Monday") == 0) 
+19     { 
+20         printf("\nHari Senin\n"); 
+21 
+ 
+22     }else if(strcmp(HARI,"Tuesday") == 0) 
+23     { 
+24         printf("\nHari Selasa\n"); 
+25 
+ 
+26     }else if(strcmp(HARI,"Wednesday") == 0) 
+27     { 
+28         printf("\nHari Rabu\n"); 
+29 
+ 
+30     }else if(strcmp(HARI,"Thursday") == 0) 
+31     { 
+32         printf("\nHari Kamis\n"); 
+33 
+ 
+34     }else if(strcmp(HARI,"Friday") == 0) 
+35     { 
+36         printf("\nHari Jum'at\n"); 
+37 
+ 
+38     }else if(strcmp(HARI,"Saturday") == 0) 
+39     { 
+40         printf("\nHari Sabtu\n"); 
+41 
+ 
+42     }else if(strcmp(HARI,"Sunday") == 0) 
+43     { 
+44         printf("\nHari Minggu\n"); 
+45 
+ 
+46     } 
+47 strftime( buffer, 80, " %d %B %Y pukul :%H : %M : %S wib",info); 
+48     printf("Tanggal & Jam : %s \n", buffer); 
+49 } 
+50 
+ 
+51 int main() 
+52 { 
+53     time_t AWAL=0, AKHIR=0; 
+54 
+ 
+55         time(&AWAL); 
+56         while(1) 
+57         { 
+58             time(&AKHIR); 
+59             if(AKHIR-AWAL > 0) 
+60             { 
+61                 tampilkan_kalender (); 
+62                 AWAL = AKHIR; 
+63             } 
+64         } 
+65         return 0; 
+66 } 
